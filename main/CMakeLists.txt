@@ -1,0 +1,23 @@
+idf_component_register(
+    SRCS
+        "main.c"
+        "../src/manifest.c"
+        "../src/version.c"
+        "../src/hexutil.c"
+    INCLUDE_DIRS
+        "."
+        "../include"
+    REQUIRES
+        esp_http_client
+        esp_https_ota
+        esp-tls
+        app_update
+        nvs_flash
+        esp_event
+        esp_netif
+        esp_wifi
+        esp_partition
+        mbedtls
+    EMBED_TXTFILES
+        "certs/example_ca_cert.pem"
+)

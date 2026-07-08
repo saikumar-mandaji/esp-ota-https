@@ -1,0 +1,19 @@
+# esp-ota-https default sdkconfig overrides
+# Target: ESP32 (ESP32-DevKitC-32E). See docs/hardware/BOM.md.
+
+# --- OTA needs two "ota_0"/"ota_1" app slots + an otadata partition,
+#     not the default single-app table. ---
+CONFIG_PARTITION_TABLE_TWO_OTA=y
+
+# --- mbedTLS: verify the server's certificate against our pinned CA;
+#     never disable verification. See docs/ARCHITECTURE.md. ---
+CONFIG_MBEDTLS_CERTIFICATE_BUNDLE=n
+CONFIG_ESP_TLS_INSECURE=n
+CONFIG_ESP_TLS_SKIP_SERVER_CERT_VERIFY=n
+
+# --- esp_https_ota: verify image is a signed/expected app image before
+#     marking it bootable. --
+CONFIG_BOOTLOADER_APP_ROLLBACK_ENABLE=n
+
+# --- Log level: keep the manifest/version/OTA decision trail visible. ---
+CONFIG_LOG_DEFAULT_LEVEL_INFO=y

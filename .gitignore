@@ -1,0 +1,13 @@
+build/
+sdkconfig
+sdkconfig.old
+managed_components/
+dependencies.lock
+*.o
+__pycache__/
+.vscode/
+.idea/
+
+# Never commit real certs/keys -- see main/certs/README.md.
+*.pem
+!main/certs/example_ca_cert.pem
