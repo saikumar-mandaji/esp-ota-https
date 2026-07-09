@@ -5,6 +5,14 @@
 #     not the default single-app table. ---
 CONFIG_PARTITION_TABLE_TWO_OTA=y
 
+# --- The two-OTA-slot partition table (3.1MB total) doesn't fit in the
+#     default 2MB flash size assumption -- confirmed via CI ("Partitions
+#     tables occupies 3.1MB ... does not fit in configured flash size
+#     2MB"). ESP32-DevKitC-32E boards ship with 4MB flash (see
+#     docs/hardware/BOM.md), so this matches the actual hardware, not
+#     just a workaround. ---
+CONFIG_ESPTOOLPY_FLASHSIZE_4MB=y
+
 # --- mbedTLS: verify the server's certificate against our pinned CA;
 #     never disable verification. See docs/ARCHITECTURE.md. ---
 CONFIG_MBEDTLS_CERTIFICATE_BUNDLE=n
